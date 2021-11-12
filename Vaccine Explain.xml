@@ -5,21 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="204dp"
-        android:layout_height="29dp"
-        android:text="@string/textview2"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="67dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="164dp"
-        android:layout_height="254dp"
-        android:text="@string/Screen"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="238dp" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="화이자"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="357dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:text="접종 횟수:(간격)2회\n21일보관-90℃∼-60℃(6개월)\n
+플랫폼: RNA 백신(핵산백신)\n
+백신명: 코미나티주 \n
+연령:  12세 이상\n
+구성: 다회 투여용 바이알\n
+접종량 및 방법: 희석된 백신 0.3㎖, 근육주사 \n
+유통: -90℃∼-60℃(6개월)2∼8℃(31일)\n
+개봉 후 저장 희석 후 실온 (2℃∼25℃) 6시간\n"
+
+            android:textSize="20sp"
+            android:visibility="visible" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
