@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:layout_marginTop="30dp"
-                    android:text="일일 유입자"
+                    android:text="1차 접종자 수"
                     android:textColor="#673AB7"
                     android:textSize="20dp" />
 
@@ -47,7 +47,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="165dp"
                     android:layout_height="231dp"
-                    android:text="누적 유입자수 :\n 100명"
+                    android:text="누적 유입자수 :\n 1000명"
                     android:textColorHighlight="#2196F3"
                     android:textSize="20dp" />
 
@@ -55,7 +55,7 @@
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="일일 유입자 수\n 200명"
+                    android:text="누적 완치자  수\n 400명"
                     android:textSize="20dp" />
             </TableRow>
 
@@ -96,7 +96,7 @@
                     android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="일일 완치자 수\n50명"
+                    android:text="일일 완치자 수\n350명"
                     android:textSize="20sp" />
             </TableRow>
         </TableLayout>
