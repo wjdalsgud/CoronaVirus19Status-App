@@ -26,7 +26,7 @@
             android:layout_height="23dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:text="접종 횟수"
+            android:text="1차 접종 완료"
             android:textColor="#9C27B0"
             android:textSize="20sp" />
 
@@ -36,7 +36,7 @@
             android:layout_height="75dp"
             android:layout_marginBottom="20dp"
             android:ems="10"
-            android:text="접종 횟수"
+            android:text="41,823,166명"
             android:textSize="24sp" />
 
         <TextView
@@ -45,7 +45,7 @@
             android:layout_height="23dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:text="접종 완료"
+            android:text="2차 접종 완료"
             android:textColor="#9C27B0"
             android:textSize="20sp" />
 
@@ -55,7 +55,7 @@
             android:layout_height="75dp"
             android:layout_marginBottom="20dp"
             android:ems="10"
-            android:text="(2차까지)접종 완료"
+            android:text="39,845,393명"
             android:textSize="24sp" />
 
         <TextView
@@ -74,7 +74,7 @@
             android:layout_height="75dp"
             android:layout_marginBottom="20dp"
             android:ems="10"
-            android:text="접종 완료 비율"
+            android:text="1차 접종 완료 비율 : 81.4%\n2차 접종 완료 비율 : 77.6%"
             android:textSize="24sp" />
 
         <TableLayout
