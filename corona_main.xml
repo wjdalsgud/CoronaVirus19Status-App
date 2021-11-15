@@ -65,3 +65,4 @@
             android:text="코로나 인원 현황"
             android:textSize="24sp" />
     </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
