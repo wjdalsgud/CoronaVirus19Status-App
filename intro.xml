@@ -11,5 +11,6 @@
         android:layout_height="746dp"
         android:layout_gravity="center"
         android:src="@drawable/logo1" />
+    //png 파일로 로고 
 
 </LinearLayout>
