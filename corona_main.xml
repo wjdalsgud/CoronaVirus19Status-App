@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
-            android:id="@+id/logo"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="53dp"
             android:layout_marginTop="10dp"
@@ -30,7 +30,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/realtime_information"
+            android:id="@+id/editTextTextPersonName"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginBottom="20dp"
@@ -39,7 +39,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/vaccine"
+            android:id="@+id/button"
             android:layout_width="330dp"
             android:layout_height="88dp"
             android:layout_gravity="center"
@@ -48,7 +48,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/distancing"
+            android:id="@+id/button2"
             android:layout_width="330dp"
             android:layout_height="88dp"
             android:layout_gravity="center"
@@ -57,7 +57,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/current_state"
+            android:id="@+id/button5"
             android:layout_width="330dp"
             android:layout_height="88dp"
             android:layout_gravity="center"
@@ -65,4 +65,3 @@
             android:text="코로나 인원 현황"
             android:textSize="24sp" />
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
