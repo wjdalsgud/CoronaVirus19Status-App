@@ -26,6 +26,7 @@
             android:layout_height="210dp"
             android:gravity="center"
             android:text="코로나19\n현황 확인"
+            android:textColor="#673AB7"
             android:textSize="40sp" />
 
         <EditText
@@ -63,7 +64,7 @@
 
             <Button
                 android:id="@+id/registerButton"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:height="70dp"
