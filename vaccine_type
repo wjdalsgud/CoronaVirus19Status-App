@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="1.0">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/type1"
             android:layout_width="330dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -31,7 +31,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/type2"
             android:layout_width="330dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -40,7 +40,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/type3"
             android:layout_width="330dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -49,7 +49,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/type4"
             android:layout_width="330dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
