@@ -1,7 +1,3 @@
-package com.example.corona19app;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
@@ -33,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Button loginBt3 = (Button)findViewById(R.id.find_Id_PassButton);
-        loginBt3 .setOnClickListener(new View.OnClickListener() {
+        loginBt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Search_ID_PW.class);
                 startActivity(intent);
             }
         });
-
     }
+}
