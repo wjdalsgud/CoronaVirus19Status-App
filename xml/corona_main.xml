@@ -44,6 +44,7 @@
             android:layout_height="88dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
+            android:background="#80673AB7"
             android:text="백신 현황"
             android:textSize="24sp" />
 
@@ -53,6 +54,7 @@
             android:layout_height="88dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
+            android:background="#86673AB7"
             android:text="사회적 거리두기"
             android:textSize="24sp" />
 
@@ -62,6 +64,7 @@
             android:layout_height="88dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
+            android:background="#86673AB7"
             android:text="코로나 인원 현황"
             android:textSize="24sp" />
     </LinearLayout>
