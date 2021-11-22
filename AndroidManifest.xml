@@ -23,6 +23,13 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".corona_state" />
         <activity android:name=".social_distancing" />
+           <activity android:name=".residual_vaccine" />
+            <activity android:name=".vaccine_type"/>
+        <activity android:name=".foreign_corona_status" />
+        <activity android:name=".vaccine_explain"/>
+        <activity android:name=".vaccine_explain1"/>
+        <activity android:name=".vaccine_explain2"/>
+        <activity android:name=".vaccine_explain3"/>
     </application>
 
 </manifest>
