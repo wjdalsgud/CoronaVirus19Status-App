@@ -21,39 +21,43 @@
         app:layout_constraintVertical_bias="1.0">
 
         <Button
-            android:id="@+id/type1"
+            android:id="@+id/button"
             android:layout_width="330dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="50dp"
+            android:background="#8B673AB7"
             android:text="화이자"
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/type2"
+            android:id="@+id/button2"
             android:layout_width="330dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
+            android:background="#8B673AB7"
             android:text="모더나"
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/type3"
+            android:id="@+id/button5"
             android:layout_width="330dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
+            android:background="#8B673AB7"
             android:text="얀센"
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/type4"
+            android:id="@+id/button3"
             android:layout_width="330dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
+            android:background="#8B673AB7"
             android:text="아스트라제네카"
             android:textSize="24sp" />
     </LinearLayout>
