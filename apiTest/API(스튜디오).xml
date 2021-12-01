@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <!--날짜-->
+        <TextView
+            android:id="@+id/dateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="기준 날짜" />
+
+        <!--치료중-->
+        <TextView
+            android:id="@+id/careText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="치료중 인원" />
+
+        <!--사망자-->
+        <TextView
+            android:id="@+id/deathText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="사망자 인원" />
+
+        <!--확진자-->
+        <TextView
+            android:id="@+id/decideText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="확진자 인원" />
+
+        <!--검사진행-->
+        <TextView
+            android:id="@+id/examText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="검사진행 인원" />
+
+        <!--격리해제(완치자)-->
+        <TextView
+            android:id="@+id/clearText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="격리해제(완치자) 인원" />
+
+        <!--누적 검사 수-->
+        <TextView
+            android:id="@+id/accExamText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="누적 검사 수" />
+
+        <!--누적 검사 완료 수-->
+        <TextView
+            android:id="@+id/accExamCompText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="누적 검사 완료 수" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
