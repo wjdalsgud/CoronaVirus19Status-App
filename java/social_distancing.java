@@ -1,8 +1,7 @@
-package com.example.corona19app;
+package com.example.coronastatusapp;
 
 import android.app.Activity;
 import android.os.Bundle;
-
 
 public class social_distancing extends Activity {
     @Override
