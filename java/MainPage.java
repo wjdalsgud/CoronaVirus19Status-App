@@ -1,11 +1,12 @@
-package com.example.corona19app;
+package com.example.coronastatusapp;
 
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+
 
 public class MainPage extends Activity {
 
@@ -14,7 +15,9 @@ public class MainPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.corona_main);
 
-        Button loginBt4 = (Button)findViewById(R.id.socialbutton);
+
+
+        Button loginBt4 = (Button) findViewById(R.id.socialbutton);
         loginBt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -23,8 +26,8 @@ public class MainPage extends Activity {
             }
         });
 
-        Button vaccinebutton = (Button)findViewById(R.id.vaccinebutton);
-        vaccinebutton.setOnClickListener(new View.OnClickListener() {
+        Button vaccinebutton1 = (Button) findViewById(R.id.vaccinebutton);
+        vaccinebutton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vaccine.class);
@@ -32,7 +35,7 @@ public class MainPage extends Activity {
             }
         });
 
-        Button button4 = (Button)findViewById(R.id.button5);
+        Button button4 = (Button) findViewById(R.id.coronabutton);
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,3 +44,4 @@ public class MainPage extends Activity {
             }
         });
     }
+
