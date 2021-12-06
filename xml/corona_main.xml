@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/logo_name"
             android:layout_width="match_parent"
             android:layout_height="53dp"
             android:layout_marginTop="10dp"
@@ -30,7 +30,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/corona_state"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginBottom="20dp"
@@ -41,7 +41,7 @@
 
 
         <Button
-            android:id="@+id/socialbutton"
+            android:id="@+id/social_distancing_button"
             android:layout_width="330dp"
             android:layout_height="88dp"
             android:layout_gravity="center"
@@ -51,7 +51,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/vaccinebutton"
+            android:id="@+id/vaccine_button"
             android:layout_width="330dp"
             android:layout_height="88dp"
             android:layout_gravity="center"
@@ -61,7 +61,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/corona_state_button"
             android:layout_width="330dp"
             android:layout_height="88dp"
             android:layout_gravity="center"
