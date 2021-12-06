@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
-            android:id="@+id/number"
+            android:id="@+id/first_complete"
             android:layout_width="match_parent"
             android:layout_height="23dp"
             android:layout_marginTop="20dp"
@@ -31,7 +31,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/number1"
+            android:id="@+id/first_complete_API"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_marginBottom="20dp"
@@ -40,7 +40,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/number_complete"
+            android:id="@+id/second_complete"
             android:layout_width="match_parent"
             android:layout_height="23dp"
             android:layout_marginTop="20dp"
@@ -50,7 +50,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/number_complete1"
+            android:id="@+id/second_complete_API"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_marginBottom="20dp"
@@ -69,7 +69,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/complete_rate1"
+            android:id="@+id/complete_rate_API"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_marginBottom="20dp"
@@ -86,7 +86,7 @@
                 android:layout_height="match_parent" >
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/Residual_vaccine_button"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_marginLeft="20dp"
@@ -97,7 +97,7 @@
                     android:textSize="24sp" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/Vaccine_type_button"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_marginBottom="20dp"
