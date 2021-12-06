@@ -20,14 +20,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="성함"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/register_Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -37,7 +37,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="전화번호"
@@ -49,7 +49,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/register_Phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -59,7 +59,7 @@
                 android:textSize="24sp" />
 
             <Button
-                android:id="@+id/phone_checkbutton"
+                android:id="@+id/phone_CheckButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -70,14 +70,14 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/birth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="생년월일"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/register_Birth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -87,7 +87,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="아이디"
@@ -99,7 +99,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextTextPersonName4"
+                android:id="@+id/register_ID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -109,7 +109,7 @@
                 android:textSize="24sp" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/id_CheckButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#81673AB7"
@@ -118,14 +118,14 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="패스워드"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/register_Pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -134,7 +134,7 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/editTextTextPassword2"
+            android:id="@+id/register_Pass_recheck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -144,7 +144,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/register_Button"
             android:layout_width="150dp"
             android:layout_height="65dp"
             android:layout_gravity="center"
