@@ -1,6 +1,7 @@
-package com.example.coronastatusapp;
+package com.example.coronavirus19status_app;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,51 +19,69 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.PipedReader;
+
 
 public class register extends AppCompatActivity {
 
-    private FirebaseAuth mFireBaseAuth; // FireBase 인증
+//    private FirebaseAuth mFireBaseAuth; // FireBase 인증
+//
+//    private DatabaseReference mDataBaseRef; // 실시간 데이터베이스
+//    private EditText mEdtName, mEdtPhone, mEdtBitrh, mEdtID, mEdtPw; // 회원가입 입력필드
+//    private Button mBtnRegister;
 
-    private DatabaseReference mDataBaseRef; // 실시간 데이터베이스
-    private EditText mEdtName,mEdtPhone, mEdtBitrh, mEdtID , mEdtPw; // 회원가입 입력필드
-    private Button mBtnRegister;
+    private EditText email_join;
+    private EditText Pwd_join;
+    private EditText name_join;
+    private  Button register_Button;
+
+    FirebaseAuth firebaseAuth;
+
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
+        name_join = (EditText) findViewById(R.id.register_Name);
+        email_join = (EditText)findViewById(R.id.register_ID);
+        Pwd_join = (EditText) findViewById(R.id.register_Pass);
+        register_Button = (Button)findViewById(R.id.register_Button);
 
-        mFireBaseAuth = FirebaseAuth.getInstance();
-        mDataBaseRef = FirebaseDatabase.getInstance().getReference("coronaStatusApp");
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        mEdtID = findViewById(R.id.editTextTextPersonName4);
-        mEdtPw = findViewById(R.id.editTextTextPassword);
-        mBtnRegister =findViewById(R.id.Registerbutton);
-
-        mBtnRegister.setOnClickListener(new View.OnClickListener() {
+        register_Button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // 회원가입 처리 시작
-                String strID = mEdtID.getText().toString();
-                String strPwd = mEdtPw.getText().toString();
-
-                //FireBaseAuth 진행
-                mFireBaseAuth.createUserWithEmailAndPassword(strID,strPwd).addOnCompleteListener(register.this, new OnCompleteListener<AuthResult>() {
+            public void onClick(View v) {
+                final String email = email_join.getText().toString().trim();
+                final  String pwd = Pwd_join.getText().toString().trim();
+                final  String name = name_join.getText().toString().trim();
+                firebaseAuth.createUserWithEmailAndPassword(email ,pwd).addOnCompleteListener(register.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser firebaseuser = mFireBaseAuth.getCurrentUser();
-                            UserAccount account = new UserAccount();
-                            account.setIdToken(firebaseuser.getUid());
-                            account.setEmailID(firebaseuser.getEmail());
-                            account.setPassword(strPwd);
+                        if(task.isSuccessful()) {
 
-                            // setValue : dataBase에 insert 삽입
-                            mDataBaseRef.child("UserAccount").child(firebaseuser.getUid()).setValue(account);
+                            FirebaseDatabase.getInstance().getReference("coronaStatusApp").child("UserAccount")
+                                    .child(firebaseAuth.getInstance().getCurrentUser().getUid()).setValue(name).
+                                    addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
 
-                            Toast.makeText(register.this, "회원가입에 성공하셨습니다", Toast.LENGTH_SHORT).show();
+                                            //    progressbar GONE
+//                                            signUp_progress.setVisibility(View.GONE);
 
+                                            Toast.makeText(register.this , "Successful Registered", Toast.LENGTH_SHORT).show();
+
+
+                                            Intent intent = new Intent(register.this, MainActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    });
                         } else {
-                            Toast.makeText(register.this, "회원가입에 실패하셨습니다", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(register.this , "등록 에러",Toast.LENGTH_SHORT).show();
+                            return;
                         }
                     }
                 });
