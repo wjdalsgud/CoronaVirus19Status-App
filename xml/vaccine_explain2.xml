@@ -15,7 +15,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/moderna"
+                android:id="@+id/janssen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -24,7 +24,7 @@
                 android:textSize="40sp" />
 
             <TextView
-                android:id="@+id/moderna_explain"
+                android:id="@+id/janssen_explain"
                 android:layout_width="385dp"
                 android:layout_height="359dp"
                 android:layout_gravity="center"
