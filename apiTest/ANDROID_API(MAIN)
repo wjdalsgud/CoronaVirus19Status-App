@@ -61,13 +61,13 @@ public class MainActivity extends AppCompatActivity {
                                 String coronadata2= getHTML1();
                                 String vaccine_api= Vaccine_api();
 
-/*
+
                                 //날짜
-                                int createStart = data.indexOf("<createDt>");
-                                int createEnd = data.indexOf("</createDt>");
-                                String createDt = data.substring(createStart,createEnd);
+                                int createStart = coronadata.indexOf("<createDt>");
+                                int createEnd = coronadata.indexOf("</createDt>");
+                                String createDt = coronadata.substring(createStart,createEnd);
                                 String createDtString = createDt.replace("<createDt>", "기준 날짜 = ");
-                                dateText.setText(createDtString);*/
+                                dateText.setText(createDtString);
 
                                 int Accumulated_confirmedStart=coronadata.indexOf("<decideCnt>");
                                 int Accumulated_confirmedEnd=coronadata.indexOf("</decideCnt>");
