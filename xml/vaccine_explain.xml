@@ -25,7 +25,7 @@
 
             <TextView
                 android:id="@+id/Pfizer_explain"
-                android:layout_width="wrap_content"
+                android:layout_width="385dp"
                 android:layout_height="357dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="100dp"
