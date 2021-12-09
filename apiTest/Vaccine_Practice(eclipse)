@@ -31,6 +31,49 @@ public class Inheritance {
         rd.close();
         conn.disconnect();
         System.out.println(sb.toString());
-        String ab=sb.toString();
+        String vaccine_api=sb.toString();
+        int timeStart=vaccine_api.indexOf("<dataTime>");
+        int timeEnd=vaccine_api.indexOf("</dataTime>");
+        String time=vaccine_api.substring(timeStart,timeEnd);
+        String time1=time.replace("<dataTime>", "기준 시간 =");
+        System.out.println(time1);
+        
+        int daily_firstCntStart=vaccine_api.indexOf("<firstCnt>");
+        int daily_firstCntEnd=vaccine_api.indexOf("</firstCnt>");
+        String daily_firstCnt=vaccine_api.substring(daily_firstCntStart,daily_firstCntEnd);
+        String daily_firstCnt1=daily_firstCnt.replace("<firstCnt>", "일일 1차 접종자 수 = ");
+        System.out.println(daily_firstCnt1);
+        
+        int daily_secondCntStart=vaccine_api.indexOf("<secondCnt>");
+        int daily_secondCntEnd=vaccine_api.indexOf("</secondCnt>");
+        String daily_secondCnt=vaccine_api.substring(daily_secondCntStart,daily_secondCntEnd);
+        String daily_secondCnt1=daily_secondCnt.replace("<secondCnt>", "일일 2차 접종자 수 = ");
+        System.out.println(daily_secondCnt1);
+
+        int daily_thirdCntStart=vaccine_api.indexOf("<thirdCnt>");
+        int daily_thirdCntEnd=vaccine_api.indexOf("</thirdCnt>");
+        String daily_thirdCnt=vaccine_api.substring(daily_thirdCntStart,daily_thirdCntEnd);
+        String daily_thirdCnt1=daily_thirdCnt.replace("<thirdCnt>", "일일 3차 접종자 수 = ");
+        System.out.println(daily_thirdCnt1);
+
+        int bbb=vaccine_api.indexOf("(A)+(B)");
+        String rev_vaccine_api=sb.delete(0, bbb).toString();
+        int accumulated_firstCntStart=rev_vaccine_api.indexOf("<firstCnt>");
+        int accumulated_firstCntEnd=rev_vaccine_api.indexOf("</firstCnt>");
+        String accumulated_firstCnt=rev_vaccine_api.substring(accumulated_firstCntStart,accumulated_firstCntEnd);
+        String accumulated_firstCnt1=accumulated_firstCnt.replace("<firstCnt>", "누적 1차 접종자 수 = ");
+        System.out.println(accumulated_firstCnt1);
+        
+        int accumulated_secondCntStart=rev_vaccine_api.indexOf("<secondCnt>");
+        int accumulated_secondCntEnd=rev_vaccine_api.indexOf("</secondCnt>");
+        String accumulated_secondCnt=rev_vaccine_api.substring(accumulated_secondCntStart,accumulated_secondCntEnd);
+        String accumulated_secondCnt1=accumulated_secondCnt.replace("<secondCnt>", "누적 2차 접종자 수 = ");
+        System.out.println(accumulated_secondCnt1);
+    
+        int accumulated_thirdCntStart=rev_vaccine_api.indexOf("<thirdCnt>");
+        int accumulated_thirdCntEnd=rev_vaccine_api.indexOf("</thirdCnt>");
+        String accumulated_thirdCnt=rev_vaccine_api.substring(accumulated_thirdCntStart,accumulated_thirdCntEnd);
+        String accumulated_thirdCnt1=accumulated_thirdCnt.replace("<thirdCnt>", "누적 3차 접종자 수 = ");
+        System.out.println(accumulated_thirdCnt1);
     }
 }
