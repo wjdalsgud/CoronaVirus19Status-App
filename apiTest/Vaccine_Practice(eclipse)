@@ -56,8 +56,8 @@ public class Inheritance {
         String daily_thirdCnt1=daily_thirdCnt.replace("<thirdCnt>", "일일 3차 접종자 수 = ");
         System.out.println(daily_thirdCnt1);
 
-        int bbb=vaccine_api.indexOf("(A)+(B)");
-        String rev_vaccine_api=sb.delete(0, bbb).toString();
+        int rev=vaccine_api.indexOf("(A)+(B)");
+        String rev_vaccine_api=sb.delete(0, rev).toString();
         int accumulated_firstCntStart=rev_vaccine_api.indexOf("<firstCnt>");
         int accumulated_firstCntEnd=rev_vaccine_api.indexOf("</firstCnt>");
         String accumulated_firstCnt=rev_vaccine_api.substring(accumulated_firstCntStart,accumulated_firstCntEnd);
