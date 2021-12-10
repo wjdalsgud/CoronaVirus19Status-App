@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mFireBaseAuth; // FireBase 인증
     private DatabaseReference mDataBaseRef; // 실시간 데이터베이스
-    private EditText  mEdtID , mEdtPw; // 회원가입 입력필드
+    private EditText mEdtID, mEdtPw; // 회원가입 입력필드
 
 
     @Override
@@ -35,38 +35,34 @@ public class MainActivity extends AppCompatActivity {
         mFireBaseAuth = FirebaseAuth.getInstance();
         mDataBaseRef = FirebaseDatabase.getInstance().getReference("coronaStatusApp");
 
-        EditText Editid= (EditText)findViewById(R.id.enterId);
-        EditText EditPW= (EditText)findViewById(R.id.enterPass);
+        EditText Editid = (EditText) findViewById(R.id.enterId);
+        EditText EditPW = (EditText) findViewById(R.id.enterPass);
 
-        Button loginBt1 = (Button)findViewById(R.id.loginButton);
-        loginBt1.setOnClickListener(new View.OnClickListener()
-        {
+        Button loginBt1 = (Button) findViewById(R.id.loginButton);
+        loginBt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 로그인 요청
                 String strID = Editid.getText().toString();
-                String strPwd =EditPW.getText().toString();
+                String strPwd = EditPW.getText().toString();
 
-                mFireBaseAuth.signInWithEmailAndPassword(strID,strPwd).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>()
-                {
+                mFireBaseAuth.signInWithEmailAndPassword(strID, strPwd).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task)
-                    {
-                        if(task.isSuccessful()) {
-                            Intent intent = new Intent(MainActivity.this,MainPage.class);
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Intent intent = new Intent(MainActivity.this, MainPage.class);
                             startActivity(intent);
-                            Log.d("dsdsd",strID);
-                        }else {
+                            Log.d("dsdsd", strID);
+                        } else {
                             Toast.makeText(MainActivity.this, "로그인 실패..!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
             }
-       });
+        });
 
 
-
-        Button loginBt2 = (Button)findViewById(R.id.registerButton);
+        Button loginBt2 = (Button) findViewById(R.id.registerButton);
         loginBt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button loginBt3 = (Button)findViewById(R.id.find_Id_PassButton);
+        Button loginBt3 = (Button) findViewById(R.id.find_Id_PassButton);
         loginBt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
