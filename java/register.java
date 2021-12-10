@@ -1,4 +1,4 @@
-package com.example.coronavirus19status_app;
+package com.example.coronastatusapp;
 
 
 import android.content.Intent;
@@ -50,7 +50,6 @@ public class register extends AppCompatActivity {
         register_Button = (Button)findViewById(R.id.register_Button);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
         register_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +69,14 @@ public class register extends AppCompatActivity {
 
                                             //    progressbar GONE
 //                                            signUp_progress.setVisibility(View.GONE);
+                                            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                                            UserAccount account = new UserAccount();
 
+                                            account.setIdToken(firebaseUser.getUid());
+                                            account.setEmailID(firebaseUser.getEmail());
+                                            account.setPassword(pwd);
+                                            account.setName(name);
+databaseReference.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
                                             Toast.makeText(register.this , "Successful Registered", Toast.LENGTH_SHORT).show();
 
 
@@ -87,4 +93,4 @@ public class register extends AppCompatActivity {
                 });
             }
         });
-    }
+    }}
