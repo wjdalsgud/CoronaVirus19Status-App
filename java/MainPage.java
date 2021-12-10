@@ -17,7 +17,7 @@ public class MainPage extends Activity {
 
 
 
-        Button loginBt4 = (Button) findViewById(R.id.socialbutton);
+        Button loginBt4 = (Button) findViewById(R.id.social_distancing_button);
         loginBt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,7 +26,7 @@ public class MainPage extends Activity {
             }
         });
 
-        Button vaccinebutton1 = (Button) findViewById(R.id.vaccinebutton);
+        Button vaccinebutton1 = (Button) findViewById(R.id.vaccine_button);
         vaccinebutton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,7 +35,7 @@ public class MainPage extends Activity {
             }
         });
 
-        Button button4 = (Button) findViewById(R.id.coronabutton);
+        Button button4 = (Button) findViewById(R.id.corona_state_button);
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
