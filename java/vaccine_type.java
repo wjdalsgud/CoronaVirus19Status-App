@@ -1,4 +1,4 @@
-package com.example.corona19app;
+package com.example.coronastatusapp;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,7 +13,7 @@ public class vaccine_type extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaccine_type);
 
-        Button bt2= (Button)findViewById(R.id.button);
+        Button bt2= (Button)findViewById(R.id.Pfizer_Button);
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -21,7 +21,7 @@ public class vaccine_type extends Activity {
                 startActivity(intent);
             }
         });
-        Button bt3= (Button)findViewById(R.id.button2);
+        Button bt3= (Button)findViewById(R.id.Moderna_button);
         bt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,7 +30,7 @@ public class vaccine_type extends Activity {
             }
         });
 
-        Button bt4= (Button)findViewById(R.id.button5);
+        Button bt4= (Button)findViewById(R.id.Janssen_button);
         bt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,7 +39,7 @@ public class vaccine_type extends Activity {
             }
         });
 
-        Button bt5= (Button)findViewById(R.id.button3);
+        Button bt5= (Button)findViewById(R.id.Astrazeneca_button);
         bt5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,8 +47,5 @@ public class vaccine_type extends Activity {
                 startActivity(intent);
             }
         });
-
-
-
     }
 }
