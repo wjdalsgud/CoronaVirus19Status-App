@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         TextView Accumulated_second_complete_API = (TextView) findViewById(R.id.Accumulated_second_complete_API);
         TextView daily_third_complete_API = (TextView) findViewById(R.id.daily_third_complete_API);
         TextView Accumulated_third_complete_API = (TextView) findViewById(R.id.Accumulated_third_complete_API);
-
+        TextView City_API=(TextView)findViewById(R.id.City_API);
         Button b1 = (Button) findViewById(R.id.button);
 
 
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                                 String coronadata = getHTML(); //데이터 불러오기
                                 String coronadata2= getHTML1();
                                 String vaccine_api= Vaccine_api();
+                                String city_api=City_api();
 
 
                                 //날짜
@@ -180,6 +181,11 @@ public class MainActivity extends AppCompatActivity {
                                 String accumulated_thirdCnt1=accumulated_thirdCnt.replace("<thirdCnt>", "누적 3차 접종자 수 = ");
                                 Accumulated_third_complete_API.setText(accumulated_thirdCnt1);
 
+                                int Start=city_api.indexOf("<defCnt>");
+                                int End=city_api.indexOf("</defCnt>");
+                                String sestring=city_api.substring(Start,End);
+                                String sestring1=sestring.replace("defCnt","확진자 수 = ");
+                                City_API.setText(sestring1);
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -290,6 +296,53 @@ public class MainActivity extends AppCompatActivity {
         }
         return coronaHtml;
     }
+
+    private String City_api() {
+        String coronaHtml = "";
+        HttpURLConnection con = null;
+        InputStreamReader isr = null;
+        BufferedReader br = null;
+        int time=Integer.parseInt(getTime());
+        String time1=Integer.toString(time-1);
+        try{
+            StringBuilder urlBuilder = new StringBuilder("http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson"); /*URL*/
+            urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=BGYZ3GEcNWvV9fWuAwFKo9dMtPwYVng3hWqlYLq9dHcHp5DGZAXeoBQJhD5nRR%2B0XZW8EqPjwkxzm5ph6ZIwqA%3D%3D"); /*Service Key*/
+            urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
+            urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
+            urlBuilder.append("&" + URLEncoder.encode("startCreateDt","UTF-8") + "=" + URLEncoder.encode(time1, "UTF-8")); /*검색할 생성일 범위의 시작*/
+            urlBuilder.append("&" + URLEncoder.encode("endCreateDt","UTF-8") + "=" + URLEncoder.encode(time1, "UTF-8")); /*검색할 생성일 범위의 종료*/
+            URL url = new URL(urlBuilder.toString());
+            con = (HttpURLConnection) url.openConnection();
+            con.setConnectTimeout(CONN_TIME);
+            con.setReadTimeout(CONN_TIME);
+
+            isr = new InputStreamReader(con.getInputStream());
+            br = new BufferedReader(isr);
+
+            String str = null;
+            while ((str = br.readLine()) != null) {
+                coronaHtml += str + "\n";
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(con != null){
+                try{con.disconnect();}catch(Exception e){}
+            }
+
+            if(isr != null){
+                try{isr.close();}catch(Exception e){}
+            }
+
+            if(br != null){
+                try{br.close();}catch(Exception e){}
+            }
+        }
+        return coronaHtml;
+    }
+
+
 
     private String Vaccine_api() {
         String coronaHtml = "";
