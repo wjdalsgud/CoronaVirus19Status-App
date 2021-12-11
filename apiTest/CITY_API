@@ -1,0 +1,805 @@
+package com.example.prac01;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.NetworkOnMainThreadException;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import android.view.View;
+import android.widget.EditText;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class MainActivity extends AppCompatActivity {
+
+    long mNow;
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyyMMdd");
+    final int CONN_TIME = 5000;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        TextView Total_API=(TextView)findViewById(R.id.Total_API);
+        TextView Total_API2=(TextView)findViewById(R.id.Total_API2);
+
+
+        Button b1 = (Button) findViewById(R.id.button);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    new Thread() {
+                        public void run() {
+                            try {
+                                String city_api=City_api();
+                                StringBuffer sb=new StringBuffer();
+                                sb.append(city_api);
+                                int i=0;
+                                String item[]=new String[20];
+                                int city_Start;
+                                int city_End;
+                                String city_data;
+                                String city_data_string;
+
+                                for(i=0;i<19;i++){
+
+                                    city_Start = sb.indexOf("<item>");
+                                    city_End = sb.indexOf("</item>");
+                                    item[i] = sb.substring(city_Start, city_End);
+                                    sb.delete(city_Start, city_End+2);
+                                    if(item[i].contains("Gyeonggi")) {
+
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("경기도 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Sejong")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("세종 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Jeju")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("제주도 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Gyeongsangnam")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("경상남도 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Gyeongsangbuk")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("경상북도 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Jeollanam")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("전라남도 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Jeollabuk")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("전라북도 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Chungcheongnam")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("충청남도 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Chungcheongbuk")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("충청북도 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Gangwon")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("강원도 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Ulsan")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("울산 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Daejeon")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("대전 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Gwangju")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("광주 통계 \n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Incheon")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API2.append("인천 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API2.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API2.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Daegu")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API.append("대구 통계 \n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Busan")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API.append("부산 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Seoul")) {
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API.setText("서울 통계\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API.append("\n"+city_data_string+"\n");
+
+                                    }else if(item[i].contains("Total")) {
+
+                                        city_Start=item[i].indexOf("<incDec>");
+                                        city_End=item[i].indexOf("</incDec>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<incDec>", "일일 확진자 수 = ");
+                                        Total_API.append("전체 통계 \n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<overFlowCnt>");
+                                        city_End=item[i].indexOf("</overFlowCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<overFlowCnt>", "일일 해외 유입자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<qurRate>");
+                                        city_End=item[i].indexOf("</qurRate>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<qurRate>", "10만명 당 확진자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<defCnt>");
+                                        city_End=item[i].indexOf("</defCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<defCnt>", "누적 확진자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<isolClearCnt>");
+                                        city_End=item[i].indexOf("</isolClearCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                        Total_API.append("\n"+city_data_string);
+
+                                        city_Start=item[i].indexOf("<deathCnt>");
+                                        city_End=item[i].indexOf("</deathCnt>");
+                                        city_data=item[i].substring(city_Start,city_End);
+                                        city_data_string=city_data.replace("<deathCnt>", "누적 사망자 수 = ");
+                                        Total_API.append("\n"+city_data_string+"\n");
+
+                                    }else{
+                                        Total_API.append("몰?루");
+                                    }
+
+                                }
+
+
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }.start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private String getTime() {
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return mFormat.format(mDate);
+    }
+
+
+    private String City_api() {
+        String coronaHtml = "";
+        HttpURLConnection con = null;
+        InputStreamReader isr = null;
+        BufferedReader br = null;
+        int time=Integer.parseInt(getTime());
+        String time1=Integer.toString(time-1);
+        try{
+            StringBuilder urlBuilder = new StringBuilder("http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson"); /*URL*/
+            urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=BGYZ3GEcNWvV9fWuAwFKo9dMtPwYVng3hWqlYLq9dHcHp5DGZAXeoBQJhD5nRR%2B0XZW8EqPjwkxzm5ph6ZIwqA%3D%3D"); /*Service Key*/
+            urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
+            urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
+            urlBuilder.append("&" + URLEncoder.encode("startCreateDt","UTF-8") + "=" + URLEncoder.encode(time1, "UTF-8")); /*검색할 생성일 범위의 시작*/
+            urlBuilder.append("&" + URLEncoder.encode("endCreateDt","UTF-8") + "=" + URLEncoder.encode(time1, "UTF-8")); /*검색할 생성일 범위의 종료*/
+            URL url = new URL(urlBuilder.toString());
+            con = (HttpURLConnection) url.openConnection();
+            con.setConnectTimeout(CONN_TIME);
+            con.setReadTimeout(CONN_TIME);
+
+            isr = new InputStreamReader(con.getInputStream());
+            br = new BufferedReader(isr);
+
+            String str = null;
+            while ((str = br.readLine()) != null) {
+                coronaHtml += str + "\n";
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(con != null){
+                try{con.disconnect();}catch(Exception e){}
+            }
+
+            if(isr != null){
+                try{isr.close();}catch(Exception e){}
+            }
+
+            if(br != null){
+                try{br.close();}catch(Exception e){}
+            }
+        }
+        return coronaHtml;
+    }
+}
