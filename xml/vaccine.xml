@@ -26,60 +26,112 @@
             app:layout_constraintVertical_bias="1.0">
 
             <TextView
-                android:id="@+id/first_complete"
+                android:id="@+id/daily_first_complete"
                 android:layout_width="match_parent"
                 android:layout_height="23dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="1차 접종 완료"
+                android:layout_marginBottom="5dp"
+                android:text="일일 1차 접종 완료"
                 android:textColor="#9C27B0"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/first_complete_API"
+                android:id="@+id/daily_first_complete_API"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
                 android:text="41,823,166명"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/second_complete"
+                android:id="@+id/daily_second_complete"
                 android:layout_width="match_parent"
                 android:layout_height="23dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="2차 접종 완료"
+                android:layout_marginBottom="5dp"
+                android:text="일일 2차 접종 완료"
                 android:textColor="#9C27B0"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/second_complete_API"
+                android:id="@+id/daily_second_complete_API"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
                 android:text="39,845,393명"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/complete_rate"
+                android:id="@+id/daily_third_complete"
                 android:layout_width="match_parent"
                 android:layout_height="23dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="접종 완료 비율"
+                android:layout_marginBottom="5dp"
+                android:text="일일 3차 접종 완료"
                 android:textColor="#9C27B0"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/complete_rate_API"
+                android:id="@+id/daily_third_complete_API"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
-                android:text="1차 접종 완료 비율 : 81.4%\n2차 접종 완료 비율 : 77.6%"
+                android:text="39,845,393명"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/Accumulated_fisrt_complete"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:text="누적 1차 접종 완료"
+                android:layout_marginBottom="5dp"
+                android:textColor="#9C27B0"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/Accumulated_first_complete_API"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:text="39,845,393명"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/Accumulated_second_complete"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:layout_marginBottom="5dp"
+                android:text="누적 2차 접종 완료"
+                android:textColor="#9C27B0"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/Accumulated_second_complete_API"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:text="39,845,393명"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/Accumulated_third_complete"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:layout_marginBottom="5dp"
+                android:text="누적 3차 접종 완료"
+                android:textColor="#9C27B0"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/Accumulated_third_complete_API"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:text="39,845,393명"
                 android:textSize="24sp" />
 
             <TableLayout
