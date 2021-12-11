@@ -20,7 +20,7 @@
         app:showAsAction="always"
         android:enabled="true"
         android:icon="@drawable/space"
-        android:title="거리 두기"/>
+        android:title="지역 현황"/>
 
     <item
         android:id="@+id/fourth_Tab"
