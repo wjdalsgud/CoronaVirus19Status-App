@@ -45,11 +45,11 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/Accumulated_cure"
+                        android:id="@+id/Accumulated_exam"
                         android:layout_width="168dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="5dp"
-                        android:text="누적 완치자"
+                        android:text="누적 검사자"
                         android:textColor="#673AB7"
                         android:textSize="20sp" />
                 </TableRow>
@@ -70,12 +70,12 @@
                         android:textSize="24sp" />
 
                     <TextView
-                        android:id="@+id/Accumulated_cure_API"
+                        android:id="@+id/Accumulated_exam_API"
                         android:layout_width="150dp"
                         android:layout_height="90dp"
                         android:layout_marginBottom="5dp"
                         android:ems="10"
-                        android:text="누적\n완치자 수\n356,615"
+                        android:text="누적\n검사자 수\n356,615"
                         android:textSize="24sp" />
 
                 </TableRow>
@@ -96,11 +96,11 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/daily_cure"
+                        android:id="@+id/daily_exam"
                         android:layout_width="80dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="5dp"
-                        android:text="일일 완치자"
+                        android:text="일일 검사자"
                         android:textColor="#9C27B0"
                         android:textSize="20sp" />
 
@@ -122,12 +122,12 @@
                         android:textSize="24sp" />
 
                     <TextView
-                        android:id="@+id/daily_cure_API"
+                        android:id="@+id/daily_exam_API"
                         android:layout_width="170dp"
                         android:layout_height="90dp"
                         android:layout_marginBottom="5dp"
                         android:ems="10"
-                        android:text="일일\n완치자 수\n1,601"
+                        android:text="일일\n검사자 수\n1,601"
                         android:textSize="24sp" />
 
 
