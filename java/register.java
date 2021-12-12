@@ -3,6 +3,7 @@ package com.example.coronastatusapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,7 +34,8 @@ public class register extends AppCompatActivity {
     private EditText email_join;
     private EditText Pwd_join;
     private EditText name_join;
-    private  Button register_Button;
+    private EditText register_Pass_recheck;
+    private Button register_Button;
 
     FirebaseAuth firebaseAuth;
 
@@ -45,25 +47,26 @@ public class register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
         name_join = (EditText) findViewById(R.id.register_Name);
-        email_join = (EditText)findViewById(R.id.register_ID);
+        email_join = (EditText) findViewById(R.id.register_ID);
         Pwd_join = (EditText) findViewById(R.id.register_Pass);
-        register_Button = (Button)findViewById(R.id.register_Button);
+        register_Button = (Button) findViewById(R.id.register_Button);
+        register_Pass_recheck = (EditText) findViewById(R.id.register_Pass_recheck);
 
         firebaseAuth = FirebaseAuth.getInstance();
         register_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String email = email_join.getText().toString().trim();
-                final  String pwd = Pwd_join.getText().toString().trim();
-                final  String name = name_join.getText().toString().trim();
-                firebaseAuth.createUserWithEmailAndPassword(email ,pwd).addOnCompleteListener(register.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-
-                            FirebaseDatabase.getInstance().getReference("coronaStatusApp").child("UserAccount")
-                                    .child(firebaseAuth.getInstance().getCurrentUser().getUid()).setValue(name).
-                                    addOnCompleteListener(new OnCompleteListener<Void>() {
+                final String pwd = Pwd_join.getText().toString().trim();
+                final String name = name_join.getText().toString().trim();
+                final String re_pwd = register_Pass_recheck.getText().toString().trim();
+                if (!email.equals("") && !pwd.equals("") && !name.equals("") && !re_pwd.equals("")){
+                    if (pwd.equals(re_pwd)) {
+                        firebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(register.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    FirebaseDatabase.getInstance().getReference("coronaStatusApp").child("UserAccount").child(firebaseAuth.getInstance().getCurrentUser().getUid()).setValue(name).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
 
@@ -76,21 +79,32 @@ public class register extends AppCompatActivity {
                                             account.setEmailID(firebaseUser.getEmail());
                                             account.setPassword(pwd);
                                             account.setName(name);
-databaseReference.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
-                                            Toast.makeText(register.this , "Successful Registered", Toast.LENGTH_SHORT).show();
+                                            databaseReference.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
+                                            Toast.makeText(register.this, "Successful Registered", Toast.LENGTH_SHORT).show();
 
 
                                             Intent intent = new Intent(register.this, MainActivity.class);
                                             startActivity(intent);
+                                            Toast.makeText(register.this, "등록 성공", Toast.LENGTH_SHORT).show();
                                             finish();
                                         }
                                     });
-                        } else {
-                            Toast.makeText(register.this , "등록 에러",Toast.LENGTH_SHORT).show();
-                            return;
-                        }
+                                } else {
+                                    Toast.makeText(register.this, "등록 에러", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                            }
+                        });
+                    } else {
+                        Toast.makeText(register.this, "일치하지 않음", Toast.LENGTH_SHORT).show();
+                        return;
                     }
-                });
+                }else{
+                    Toast.makeText(register.this, "모든 정보를 입력해주세요", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
             }
         });
-    }}
+    }
+}
