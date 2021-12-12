@@ -1,10 +1,16 @@
-package com.example.coronastatusapp;
+package com.example.coronavirus19status_app;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class vaccine_type extends Activity {
 
@@ -13,16 +19,16 @@ public class vaccine_type extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaccine_type);
 
-        Button bt2= (Button)findViewById(R.id.Pfizer_Button);
-        bt2.setOnClickListener(new View.OnClickListener() {
+        Button pfizer= (Button)findViewById(R.id.Pfizer_Button);
+        pfizer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vaccine_explain.class);
                 startActivity(intent);
             }
         });
-        Button bt3= (Button)findViewById(R.id.Moderna_button);
-        bt3.setOnClickListener(new View.OnClickListener() {
+        Button moderna= (Button)findViewById(R.id.Moderna_button);
+        moderna.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vaccine_explain1.class);
@@ -30,8 +36,8 @@ public class vaccine_type extends Activity {
             }
         });
 
-        Button bt4= (Button)findViewById(R.id.Janssen_button);
-        bt4.setOnClickListener(new View.OnClickListener() {
+        Button janssen= (Button)findViewById(R.id.Janssen_button);
+        janssen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vaccine_explain2.class);
@@ -39,12 +45,42 @@ public class vaccine_type extends Activity {
             }
         });
 
-        Button bt5= (Button)findViewById(R.id.Astrazeneca_button);
-        bt5.setOnClickListener(new View.OnClickListener() {
+        Button astra= (Button)findViewById(R.id.Astrazeneca_button);
+        astra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vaccine_explain3.class);
                 startActivity(intent);
+            }
+        });
+
+        BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
+        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent;
+                switch (item.getItemId()) {
+                    case R.id.first_Tab:
+                        onBackPressed();
+                        return true;
+                    case R.id.second_Tab:
+                        intent = new Intent(getApplicationContext(), MainPage.class);
+                        startActivity(intent);
+                        return true;
+                    case R.id.third_Tab:
+                        intent = new Intent(getApplicationContext(), social_distancing.class);
+                        startActivity(intent);
+                        return true;
+                    case R.id.fourth_Tab:
+                        intent = new Intent(getApplicationContext(), vaccine.class);
+                        startActivity(intent);
+                        return true;
+                    case R.id.fifth_Tab:
+                        intent = new Intent(getApplicationContext(), corona_state.class);
+                        startActivity(intent);
+                        return true;
+                }
+                return false;
             }
         });
     }
