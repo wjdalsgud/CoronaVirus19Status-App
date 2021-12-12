@@ -7,6 +7,7 @@ public class Chungcheongnam extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ulsan);
+        setContentView(R.layout.chungcheongnam);
     }
 }
+
