@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.coronastatusapp">
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.CoronaStatusApp">
-        <activity android:name=".intro"
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTask"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +24,27 @@
         <activity android:name=".register" />
         <activity android:name=".Search_ID_PW" />
         <activity android:name=".vaccine"/>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".intro"/>
         <activity android:name=".corona_state" />
         <activity android:name=".social_distancing" />
+        <activity android:name=".residual_vaccine" />
+        <activity android:name=".Sejong" />
+        <activity android:name=".Jeollanam"/>
+        <activity android:name=".Jeollabuk" />
+        <activity android:name=".Jeju" />
+        <activity android:name=".Incheon" />
+        <activity android:name=".Gyeongsangnam" />
+        <activity android:name=".Gyeonggi" />
+        <activity android:name=".Gwangju" />
+        <activity android:name=".Gangwon"/>
+        <activity android:name=".Daegu" />
+        <activity android:name=".Daejeon" />
+        <activity android:name=".ChungCheongBuk" />
+        <activity android:name=".Busan" />
+        <activity android:name=".Ulsan" />
+        <activity android:name=".Seoul" />
+        <activity android:name=".Chungcheongnam" />
+        <activity android:name=".Gyeongsangbuk" />
     </application>
 
 </manifest>
