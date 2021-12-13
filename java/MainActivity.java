@@ -1022,7 +1022,7 @@ public class MainActivity extends AppCompatActivity {
         InputStreamReader isr = null;
         BufferedReader br = null;
         int time=Integer.parseInt(getTime());
-        String time1=Integer.toString(time-2);
+        String time1=Integer.toString(time-1);
         try{
             StringBuilder urlBuilder = new StringBuilder("http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson"); /*URL*/
             urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=BGYZ3GEcNWvV9fWuAwFKo9dMtPwYVng3hWqlYLq9dHcHp5DGZAXeoBQJhD5nRR%2B0XZW8EqPjwkxzm5ph6ZIwqA%3D%3D"); /*Service Key*/
