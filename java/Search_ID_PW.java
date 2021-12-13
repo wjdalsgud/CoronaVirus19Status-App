@@ -35,9 +35,6 @@ public class Search_ID_PW extends Activity {
         setContentView(R.layout.search_id_pw);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        TextView textView1 = (TextView) findViewById(R.id.find_ID);
-        TextView textView2 = (TextView) findViewById(R.id.find_Pass);
-
         EditText find_id_name_text = (EditText) findViewById(R.id.find_ID_Name_Text);
         EditText find_pass_name_text = (EditText) findViewById(R.id.find_Pass_Name_Text);
         EditText find_pass_id_text = (EditText) findViewById(R.id.find_Pass_ID_Text);
