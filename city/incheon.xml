@@ -25,12 +25,12 @@
 
             <TextView
                 android:id="@+id/Incheon_API"
-                android:layout_width="385dp"
+                android:layout_width="340dp"
                 android:layout_height="359dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="130dp"
                 android:text=""
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:visibility="visible" />
         </LinearLayout>
     </FrameLayout>
