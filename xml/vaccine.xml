@@ -134,47 +134,31 @@
                 android:text="39,845,393명"
                 android:textSize="24sp" />
 
-            <TableLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/Vaccine_type_button"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="#8B673AB7"
+                    android:text="백신\n종류"
+                    android:textSize="24sp" />
 
-                    <Button
-                        android:id="@+id/Residual_vaccine_button"
-                        android:layout_width="150dp"
-                        android:layout_height="100dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="#8B673AB7"
-                        android:text="잔여\n백신"
-                        android:textSize="24sp" />
-
-                    <Button
-                        android:id="@+id/Vaccine_type_button"
-                        android:layout_width="150dp"
-                        android:layout_height="100dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="#8B673AB7"
-                        android:text="백신\n종류"
-                        android:textSize="24sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </TableLayout>
+                <Button
+                    android:id="@+id/Vaccine_side_effect"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="#8B673AB7"
+                    android:text="백신\n부작용"
+                    android:textSize="24sp" />
+            </LinearLayout>
 
         </LinearLayout>
     </FrameLayout>
