@@ -18,13 +18,13 @@ public class Seoul extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.seoul);
+        setContentView(R.layout.seoul); //서울 화면 출력
 
         TextView seoulText = (TextView) findViewById(R.id.Seoul_API);
-        seoulText.setText(((MainActivity) MainActivity.mContext).getSeoul());
+        seoulText.setText(((MainActivity) MainActivity.mContext).getSeoul()); //MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
 
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
-        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {// 하단 메뉴 바 동작 기능
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Intent intent;
