@@ -31,19 +31,19 @@ public class register extends AppCompatActivity {
 //    private EditText mEdtName, mEdtPhone, mEdtBitrh, mEdtID, mEdtPw; // 회원가입 입력필드
 //    private Button mBtnRegister;
 
-    private EditText email_join;
+    private EditText email_join; // 입력값 필드를 private로 선언
     private EditText Pwd_join;
     private EditText name_join;
     private EditText register_Pass_recheck;
     private Button register_Button;
 
-    FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuth; 
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {   //회원가입 루트 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
         name_join = (EditText) findViewById(R.id.register_Name);
