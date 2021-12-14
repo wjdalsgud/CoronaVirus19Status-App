@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Search_ID_PW extends Activity {
     FirebaseAuth firebaseAuth;  // FireBase 인증
 
-    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance(); FireBase 선언
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance(); //FireBase 선언
     private DatabaseReference databaseReference = firebaseDatabase.getReference(); //실시간 DataBase 
 
     String getTest = "";
