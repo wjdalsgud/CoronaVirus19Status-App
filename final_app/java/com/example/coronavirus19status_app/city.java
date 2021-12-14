@@ -16,107 +16,107 @@ public class city extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.city);
+        setContentView(R.layout.city); //화면 출력
         String pas = "";
         int creatStart;
         int creatEnd;
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Gangwon = (Button) findViewById(R.id.Gangwon_button);
         pas = ((MainActivity) MainActivity.mContext).getGangwon();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Gangwon.setText("강원도\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Chungcheongbuk = (Button) findViewById(R.id.Chungcheongbuk_button);
         pas = ((MainActivity) MainActivity.mContext).getChungcheongbuk();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Chungcheongbuk.setText("충청북도\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Daejeon = (Button) findViewById(R.id.Daejeon_button);
         pas = ((MainActivity) MainActivity.mContext).getDaejeon();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Daejeon.setText("대전\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Daegu = (Button) findViewById(R.id.Daegu_button);
         pas = ((MainActivity) MainActivity.mContext).getDaegu();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Daegu.setText("대구\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Gyeongsangbuk = (Button) findViewById(R.id.Gyeongsangbuk_button);
         pas = ((MainActivity) MainActivity.mContext).getGyeongsangbuk();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Gyeongsangbuk.setText("경상북도\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Ulsan = (Button) findViewById(R.id.Ulsan_button);
         pas = ((MainActivity) MainActivity.mContext).getUlsan();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Ulsan.setText("울산\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Gyeongsangnam = (Button) findViewById(R.id.Gyeongsangnam_button);
         pas = ((MainActivity) MainActivity.mContext).getGyeongsangnam();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Gyeongsangnam.setText("경상남도\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Gyeonggi = (Button) findViewById(R.id.Gyeonggi_button);
         pas = ((MainActivity) MainActivity.mContext).getGyeonggi();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Gyeonggi.setText("경기도\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Jeju = (Button) findViewById(R.id.Jeju_button);
         pas = ((MainActivity) MainActivity.mContext).getJeju();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Jeju.setText("제주도\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Seoul = (Button) findViewById(R.id.Seoul_button);
         pas = ((MainActivity) MainActivity.mContext).getSeoul();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Seoul.setText("서울\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Busan = (Button) findViewById(R.id.Busan_button);
         pas = ((MainActivity) MainActivity.mContext).getBusan();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Busan.setText("부산\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Gwangju = (Button) findViewById(R.id.Gwangju_button);
         pas = ((MainActivity) MainActivity.mContext).getGwangju();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Gwangju.setText("광주\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Jeollanam = (Button) findViewById(R.id.Jeollanam_button);
         pas = ((MainActivity) MainActivity.mContext).getJeollanam();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Jeollanam.setText("전라남도\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Incheon = (Button) findViewById(R.id.Incheon_button);
         pas = ((MainActivity) MainActivity.mContext).getIncheon();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Incheon.setText("인천\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Sejong = (Button) findViewById(R.id.Sejong_button);
         pas = ((MainActivity) MainActivity.mContext).getSejong();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Sejong.setText("세종\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Chungcheongnam = (Button) findViewById(R.id.Chungcheongnam_button);
         pas = ((MainActivity) MainActivity.mContext).getChungcheongnam();
         creatStart = pas.indexOf("일일 확진자 수 = ");
         creatEnd = pas.indexOf("\n");
         Chungcheongnam.setText("충청남도\n" + pas.substring(creatStart, creatEnd).replace("일일 확진자 수 = ", ""));
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         Button Jeollabuk = (Button) findViewById(R.id.Jeollabuk_button);
         pas = ((MainActivity) MainActivity.mContext).getJeollabuk();
         creatStart = pas.indexOf("일일 확진자 수 = ");
@@ -125,7 +125,7 @@ public class city extends Activity {
 
 
         Button seoul_button = (Button) findViewById(R.id.Seoul_button);
-        seoul_button.setOnClickListener(new View.OnClickListener() {
+        seoul_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Seoul.class);
@@ -133,7 +133,7 @@ public class city extends Activity {
             }
         });
         Button busan_button = (Button) findViewById(R.id.Busan_button);
-        busan_button.setOnClickListener(new View.OnClickListener() {
+        busan_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Busan.class);
@@ -141,7 +141,7 @@ public class city extends Activity {
             }
         });
         Button ulsan_button = (Button) findViewById(R.id.Ulsan_button);
-        ulsan_button.setOnClickListener(new View.OnClickListener() {
+        ulsan_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Ulsan.class);
@@ -149,7 +149,7 @@ public class city extends Activity {
             }
         });
         Button chungcheongbuk_button = (Button) findViewById(R.id.Chungcheongbuk_button);
-        chungcheongbuk_button.setOnClickListener(new View.OnClickListener() {
+        chungcheongbuk_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ChungCheongBuk.class);
@@ -157,7 +157,7 @@ public class city extends Activity {
             }
         });
         Button chungcheongnam_button = (Button) findViewById(R.id.Chungcheongnam_button);
-        chungcheongnam_button.setOnClickListener(new View.OnClickListener() {
+        chungcheongnam_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Chungcheongnam.class);
@@ -165,7 +165,7 @@ public class city extends Activity {
             }
         });
         Button daegu_button = (Button) findViewById(R.id.Daegu_button);
-        daegu_button.setOnClickListener(new View.OnClickListener() {
+        daegu_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Daegu.class);
@@ -173,7 +173,7 @@ public class city extends Activity {
             }
         });
         Button daejeon_button = (Button) findViewById(R.id.Daejeon_button);
-        daejeon_button.setOnClickListener(new View.OnClickListener() {
+        daejeon_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Daejeon.class);
@@ -181,7 +181,7 @@ public class city extends Activity {
             }
         });
         Button gangwon_button = (Button) findViewById(R.id.Gangwon_button);
-        gangwon_button.setOnClickListener(new View.OnClickListener() {
+        gangwon_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Gangwon.class);
@@ -189,7 +189,7 @@ public class city extends Activity {
             }
         });
         Button gwangju_button = (Button) findViewById(R.id.Gwangju_button);
-        gwangju_button.setOnClickListener(new View.OnClickListener() {
+        gwangju_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Gwangju.class);
@@ -197,7 +197,7 @@ public class city extends Activity {
             }
         });
         Button gyeonggi_button = (Button) findViewById(R.id.Gyeonggi_button);
-        gyeonggi_button.setOnClickListener(new View.OnClickListener() {
+        gyeonggi_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Gyeonggi.class);
@@ -205,7 +205,7 @@ public class city extends Activity {
             }
         });
         Button gyeongsangnam_button = (Button) findViewById(R.id.Gyeongsangnam_button);
-        gyeongsangnam_button.setOnClickListener(new View.OnClickListener() {
+        gyeongsangnam_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Gyeongsangnam.class);
@@ -213,7 +213,7 @@ public class city extends Activity {
             }
         });
         Button gyeongsangbuk_button = (Button) findViewById(R.id.Gyeongsangbuk_button);
-        gyeongsangbuk_button.setOnClickListener(new View.OnClickListener() {
+        gyeongsangbuk_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Gyeongsangbuk.class);
@@ -221,7 +221,7 @@ public class city extends Activity {
             }
         });
         Button incheon_button = (Button) findViewById(R.id.Incheon_button);
-        incheon_button.setOnClickListener(new View.OnClickListener() {
+        incheon_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Incheon.class);
@@ -229,7 +229,7 @@ public class city extends Activity {
             }
         });
         Button jeju_button = (Button) findViewById(R.id.Jeju_button);
-        jeju_button.setOnClickListener(new View.OnClickListener() {
+        jeju_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Jeju.class);
@@ -237,7 +237,7 @@ public class city extends Activity {
             }
         });
         Button jeollabuk_button = (Button) findViewById(R.id.Jeollabuk_button);
-        jeollabuk_button.setOnClickListener(new View.OnClickListener() {
+        jeollabuk_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Jeollabuk.class);
@@ -245,7 +245,7 @@ public class city extends Activity {
             }
         });
         Button jeollanam_button = (Button) findViewById(R.id.Jeollanam_button);
-        jeollanam_button.setOnClickListener(new View.OnClickListener() {
+        jeollanam_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Jeollanam.class);
