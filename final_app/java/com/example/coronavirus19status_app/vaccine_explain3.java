@@ -12,14 +12,14 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class vaccine_explain3 extends Activity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { //백신 설명 화면으로 이동
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaccine_explain3);
 
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
         bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) { // 하단 메뉴 바 동작 기능
                 Intent intent;
                 switch (item.getItemId()) {
                     case R.id.first_Tab:
