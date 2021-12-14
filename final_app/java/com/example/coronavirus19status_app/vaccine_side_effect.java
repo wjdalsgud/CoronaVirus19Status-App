@@ -12,14 +12,13 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class vaccine_side_effect extends Activity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { //백신 부작용 화면 출력
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaccine_side_effect);
-
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
         bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) { // 하단 메뉴 바 동작
                 Intent intent;
                 switch (item.getItemId()) {
                     case R.id.first_Tab:
