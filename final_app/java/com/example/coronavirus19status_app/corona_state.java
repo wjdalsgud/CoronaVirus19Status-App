@@ -18,41 +18,41 @@ public class corona_state extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.corona_state);
+        setContentView(R.layout.corona_state); //코로나 현황 화면 
 
         String pas = "";
         int creatStart;
         int creatEnd;
-//MainActivty에서 파싱한 코로나 API 정보를 텍스트에 출력 
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력 
         TextView Accumulated_confirmed_API = (TextView) findViewById(R.id.Accumulated_confirmed_API);
         pas = ((MainActivity)MainActivity.mContext).getAccumulated_confirmed_API();
         Accumulated_confirmed_API.setText(pas);
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력 
         TextView Accumulated_exam_API = (TextView) findViewById(R.id.Accumulated_exam_API);
         Accumulated_exam_API.setText(((MainActivity)MainActivity.mContext).getAccumulated_exam_API());
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력 
         TextView daily_confirmed_API = (TextView) findViewById(R.id.daily_confirmed_API);
         daily_confirmed_API.setText(((MainActivity)MainActivity.mContext).getDaily_confirmed_API());
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력 
         TextView daily_exam_API = (TextView) findViewById(R.id.daily_exam_API);
         daily_exam_API.setText(((MainActivity)MainActivity.mContext).getDaily_exam_API());
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력 
         TextView Accumulated_isolation_API = (TextView) findViewById(R.id.Accumulated_isolation_API);
         Accumulated_isolation_API.setText(((MainActivity)MainActivity.mContext).getAccumulated_isolation_string());
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력 
         TextView Accumulated_dead_API = (TextView) findViewById(R.id.Accumulated_dead_API);
         Accumulated_dead_API.setText(((MainActivity)MainActivity.mContext).getAccumulated_dead_API());
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력 
         TextView daily_isolation_API = (TextView) findViewById(R.id.daily_isolation_API);
         daily_isolation_API.setText(((MainActivity)MainActivity.mContext).getDaily_accumulated_isolation_string());
-
+//MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력 
         TextView daily_dead_API = (TextView) findViewById(R.id.daily_dead_API);
         daily_dead_API.setText(((MainActivity)MainActivity.mContext).getDaily_dead_API());
 
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
         bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {// 하단 메뉴 바 동작 기능
                 Intent intent;
                 switch (item.getItemId()) {
                     case R.id.first_Tab:
