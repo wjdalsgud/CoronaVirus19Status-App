@@ -25,10 +25,10 @@ public class MainPage extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.corona_main); //코로나 메인 화면 출력
-//MainActivity
+ //MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         TextView time = (TextView) findViewById(R.id.time);
         time.setText(((MainActivity) MainActivity.mContext).getDateText());
-
+ //MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         TextView all_info = (TextView) findViewById(R.id.corona_state);
         all_info.setText(((MainActivity)MainActivity.mContext).getGyeonggi());
 
@@ -60,7 +60,7 @@ public class MainPage extends Activity {
         });
 
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
-        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() { //하단 바 메뉴 기능
+        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() { //하단 메뉴 바 동작 기능
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Intent intent;
@@ -88,7 +88,7 @@ public class MainPage extends Activity {
         });
     }
     @Override
-    public void onBackPressed() { //하단 바 메뉴 기능
+    public void onBackPressed() { //하단 메뉴바  기능
         if (System.currentTimeMillis() > backKeyPressedTime + 2500) {
             backKeyPressedTime = System.currentTimeMillis();
             toast = Toast.makeText(this, "뒤로 가기 버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_LONG);
