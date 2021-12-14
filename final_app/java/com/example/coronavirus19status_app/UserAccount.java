@@ -15,7 +15,7 @@ public class UserAccount {
 
     }
 
-    public String getIdToken() {
+    public String getIdToken() {  //각 변수별 Getter and Setter 메소드 선언
         return idToken;
     }
 
