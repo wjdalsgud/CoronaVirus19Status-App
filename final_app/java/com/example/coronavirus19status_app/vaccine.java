@@ -19,28 +19,28 @@ public class vaccine extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaccine);
-
+//MainActivity에서 파싱한 코로나 API 백신 정보 값을 해당 텍스트에 출력 
         TextView daily_first_complete_API = (TextView) findViewById(R.id.daily_first_complete_API);
         daily_first_complete_API.setText(((MainActivity)MainActivity.mContext).getDaily_first_complete_API());
-
+//MainActivity에서 파싱한 코로나 API 백신 정보 값을 해당 텍스트에 출력 
         TextView daily_second_complete_API = (TextView) findViewById(R.id.daily_second_complete_API);
         daily_second_complete_API.setText(((MainActivity)MainActivity.mContext).getDaily_second_complete_API());
-
+//MainActivity에서 파싱한 코로나 API 백신 정보 값을 해당 텍스트에 출력 
         TextView daily_third_complete_API = (TextView) findViewById(R.id.daily_third_complete_API);
         daily_third_complete_API.setText(((MainActivity)MainActivity.mContext).getDaily_third_complete_API());
-
+//MainActivity에서 파싱한 코로나 API 백신 정보 값을 해당 텍스트에 출력 
         TextView Accumulated_first_complete_API = (TextView) findViewById(R.id.Accumulated_first_complete_API);
         Accumulated_first_complete_API.setText(((MainActivity)MainActivity.mContext).getAccumulated_first_complete_API());
-
+//MainActivity에서 파싱한 코로나 API 백신 정보 값을 해당 텍스트에 출력 
         TextView Accumulated_second_complete_API = (TextView) findViewById(R.id.Accumulated_second_complete_API);
         Accumulated_second_complete_API.setText(((MainActivity)MainActivity.mContext).getAccumulated_second_complete_API());
-
+//MainActivity에서 파싱한 코로나 API 백신 정보 값을 해당 텍스트에 출력 
         TextView Accumulated_third_complete_API = (TextView) findViewById(R.id.Accumulated_third_complete_API);
         Accumulated_third_complete_API.setText(((MainActivity)MainActivity.mContext).getAccumulated_third_complete_API());
 
 
         Button vaccine_type= (Button)findViewById(R.id.Vaccine_type_button);
-        vaccine_type.setOnClickListener(new View.OnClickListener() {
+        vaccine_type.setOnClickListener(new View.OnClickListener() { //백신 종류 버튼 클릭 시 백신 종류 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vaccine_type.class);
@@ -48,7 +48,7 @@ public class vaccine extends Activity {
             }
         });
         Button vaccine_side_effect = (Button) findViewById(R.id.Vaccine_side_effect);
-        vaccine_side_effect.setOnClickListener(new View.OnClickListener() {
+        vaccine_side_effect.setOnClickListener(new View.OnClickListener() { //백신 부작용 버튼 클릭 시 백신 부작용 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vaccine_side_effect.class);
@@ -56,7 +56,7 @@ public class vaccine extends Activity {
             }
         });
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
-        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() { // 하단 메뉴 바 동작 기능
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Intent intent;
