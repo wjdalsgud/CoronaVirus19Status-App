@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDataBaseRef; // 실시간 데이터베이스
     private EditText mEdtID, mEdtPw; // 회원가입 입력필드
 
+    //코로나 API 데이터 파싱한 것을 저장한 String과 int
     String dateText;
     String daily_confirmed_API;
     String Accumulated_confirmed_API;
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     String daily_third_complete_API;
     String Accumulated_third_complete_API;
     String City_API;
-
     String Gangwon = "";
     String Chungcheongbuk = "";
     String Daejeon = "";
@@ -73,10 +73,8 @@ public class MainActivity extends AppCompatActivity {
     String Chungcheongnam = "";
     String Jeollabuk = "";
     String Total = "";
-
     String daily_accumulated_isolation_string;
     String accumulated_isolation_string;
-
     int daily_accumulated_isolation;
     int accumulated_isolation_today;
 
@@ -85,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_page);
+        setContentView(R.layout.login_page); //로그인 화면 
 
         mContext = this;
 
@@ -121,7 +119,8 @@ public class MainActivity extends AppCompatActivity {
                         new Thread() {
                             public void run() {
                                 try {
-                                    String coronadata = getHTML(); //데이터 불러오기
+                                    //데이터 불러오기
+                                    String coronadata = getHTML(); 
                                     String coronadata2 = getHTML1();
                                     String vaccine_api = Vaccine_api();
                                     String city_api = City_api();
@@ -134,14 +133,14 @@ public class MainActivity extends AppCompatActivity {
                                     String createDt = coronadata.substring(createStart, createEnd);
                                     String createDtString = createDt.replace("<createDt>", "기준 날짜 = ");
                                     dateText = createDtString;
-
+                                    //코로나 API 정보 파싱 (누적 확진자)
                                     int Accumulated_confirmedStart = coronadata.indexOf("<decideCnt>");
                                     int Accumulated_confirmedEnd = coronadata.indexOf("</decideCnt>");
                                     String Accumulated_confirmedCnt = coronadata.substring(Accumulated_confirmedStart, Accumulated_confirmedEnd);
                                     String Accumulated_confirmedCnt1 = Accumulated_confirmedCnt.replace("<decideCnt>", "");
                                     Accumulated_confirmed_API = Accumulated_confirmedCnt1;
 
-
+                                    //코로나 API 정보 파싱(당일날의 누적확진자와 전날의 누적확진자 값을 빼서 일일확진자 정보를 추출하는 과정)
                                     int daily_confirmedStart = coronadata2.indexOf("<decideCnt>");
                                     int daily_confirmedEnd = coronadata2.indexOf("</decideCnt>");
                                     String daily_confirmedCnt = coronadata2.substring(daily_confirmedStart, daily_confirmedEnd);
@@ -157,14 +156,14 @@ public class MainActivity extends AppCompatActivity {
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
-
+                                    //코로나 API 정보 파싱(누적 사망자)
                                     int Accumulated_deathStart = coronadata.indexOf("<deathCnt>");
                                     int Accumulated_deathEnd = coronadata.indexOf("</deathCnt>");
                                     String Accumulated_deathCnt = coronadata.substring(Accumulated_deathStart, Accumulated_deathEnd);
                                     String Accumulated_deathCnt1 = Accumulated_deathCnt.replace("<deathCnt>", "");
                                     Accumulated_dead_API = Accumulated_deathCnt1;
 
-
+                                    //코로나 API 정보 파싱(당일날의 누적 사망자와 전날의 누적사망자 값을 빼서 일일사망자 정보를 추출하는 과정)
                                     int daily_deathStart = coronadata2.indexOf("<deathCnt>");
                                     int daily_deathEnd = coronadata2.indexOf("</deathCnt>");
                                     String daily_deathCnt = coronadata2.substring(daily_deathStart, daily_deathEnd);
@@ -181,14 +180,14 @@ public class MainActivity extends AppCompatActivity {
                                         e.printStackTrace();
                                     }
 
-
+                                    //코로나 API 정보 파싱(누적 검사자 수)
                                     int Accumulated_examStart = coronadata.indexOf("<accExamCnt>");
                                     int Accumulated_examEnd = coronadata.indexOf("</accExamCnt>");
                                     String Accumulated_examCnt = coronadata.substring(Accumulated_examStart, Accumulated_examEnd);
                                     String Accumulated_examCnt1 = Accumulated_examCnt.replace("<accExamCnt>", "");
                                     Accumulated_exam_API = Accumulated_examCnt1;
 
-
+                                    //코로나 API 정보 파싱(일일 검사자 수)
                                     int daily_examStart = coronadata2.indexOf("<accExamCnt>");
                                     int daily_examEnd = coronadata2.indexOf("</accExamCnt>");
                                     String daily_examCnt = coronadata2.substring(daily_examStart, daily_examEnd);
@@ -204,25 +203,25 @@ public class MainActivity extends AppCompatActivity {
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
-
+                                    //코로나 API 정보 파싱(일일 1차 접종자 수)
                                     int daily_firstCntStart = vaccine_api.indexOf("<firstCnt>");
                                     int daily_firstCntEnd = vaccine_api.indexOf("</firstCnt>");
                                     String daily_firstCnt = vaccine_api.substring(daily_firstCntStart, daily_firstCntEnd);
                                     String daily_firstCnt1 = daily_firstCnt.replace("<firstCnt>", "일일 1차 접종자 수 = ");
                                     daily_first_complete_API = daily_firstCnt1;
-
+                                    //코로나 API 정보 파싱(일일 2차 접종자 수)
                                     int daily_secondCntStart = vaccine_api.indexOf("<secondCnt>");
                                     int daily_secondCntEnd = vaccine_api.indexOf("</secondCnt>");
                                     String daily_secondCnt = vaccine_api.substring(daily_secondCntStart, daily_secondCntEnd);
                                     String daily_secondCnt1 = daily_secondCnt.replace("<secondCnt>", "일일 2차 접종자 수 = ");
                                     daily_second_complete_API = daily_secondCnt1;
-
+                                    //코로나 API 정보 파싱(일일 3차 접종자 수)
                                     int daily_thirdCntStart = vaccine_api.indexOf("<thirdCnt>");
                                     int daily_thirdCntEnd = vaccine_api.indexOf("</thirdCnt>");
                                     String daily_thirdCnt = vaccine_api.substring(daily_thirdCntStart, daily_thirdCntEnd);
                                     String daily_thirdCnt1 = daily_thirdCnt.replace("<thirdCnt>", "일일 3차 접종자 수 = ");
                                     daily_third_complete_API = daily_thirdCnt1;
-
+                                    //코로나 API 정보 파싱(누적 1차 접종자 수)
                                     int rev = vaccine_api.indexOf("(A)+(B)");
                                     StringBuffer sb = new StringBuffer();
                                     sb.append(vaccine_api);
@@ -232,20 +231,20 @@ public class MainActivity extends AppCompatActivity {
                                     String accumulated_firstCnt = rev_vaccine_api.substring(accumulated_firstCntStart, accumulated_firstCntEnd);
                                     String accumulated_firstCnt1 = accumulated_firstCnt.replace("<firstCnt>", "누적 1차 접종자 수 = ");
                                     Accumulated_first_complete_API = accumulated_firstCnt1;
-
+                                    //코로나 API 정보 파싱(누적 2차 접종자 수)
                                     int accumulated_secondCntStart = rev_vaccine_api.indexOf("<secondCnt>");
                                     int accumulated_secondCntEnd = rev_vaccine_api.indexOf("</secondCnt>");
                                     String accumulated_secondCnt = rev_vaccine_api.substring(accumulated_secondCntStart, accumulated_secondCntEnd);
                                     String accumulated_secondCnt1 = accumulated_secondCnt.replace("<secondCnt>", "누적 2차 접종자 수 = ");
                                     Accumulated_second_complete_API = accumulated_secondCnt1;
 
-
+                                    //코로나 API 정보 파싱(누적 3차 접종자 수)
                                     int accumulated_thirdCntStart = rev_vaccine_api.indexOf("<thirdCnt>");
                                     int accumulated_thirdCntEnd = rev_vaccine_api.indexOf("</thirdCnt>");
                                     String accumulated_thirdCnt = rev_vaccine_api.substring(accumulated_thirdCntStart, accumulated_thirdCntEnd);
                                     String accumulated_thirdCnt1 = accumulated_thirdCnt.replace("<thirdCnt>", "누적 3차 접종자 수 = ");
                                     Accumulated_third_complete_API = accumulated_thirdCnt1;
-
+                                    //코로나 API 정보 파싱 (확진자 수)
                                     int Start = city_api.indexOf("<defCnt>");
                                     int End = city_api.indexOf("</defCnt>");
                                     String sestring = city_api.substring(Start, End);
@@ -263,15 +262,17 @@ public class MainActivity extends AppCompatActivity {
                                     int city_End;
                                     String city_data;
                                     String city_data_string;
-
+                                    //코로나 API 정보 파싱(17개의 도시 코로나 현황 정보와 1개의 통합 코로나 현황 정보를 추출하기 위해서 API를 추출하는 과정)
                                     for (i = 0; i < 19; i++) {
-
+                                    //코로나 API 정보 파싱(해당API는 도시별로 <item>,</item>사이에 묶여있기 때문에 해당 부분을 파싱함)
                                         city_Start = sb.indexOf("<item>");
                                         city_End = sb.indexOf("</item>");
+                                        //코로나 API 정보 파싱(파싱 완료한 데이터는 StringBuffer에서 삭제하고 다시 읽어들이는 것을 반복함)
                                         item[i] = sb.substring(city_Start, city_End);
                                         sb.delete(city_Start, city_End + 2);
+                                        
+                                       //코로나 API 정보 파싱 (if문을 사용해서 각도시 별로 코로나 현황 값(일일 확진자, 일일 해외 유입자, 10만명 당 확진자, 누적 확진자, 누적 사망자 정보) 추출하여 String값에 저장하고 xml에 )
                                         if (item[i].contains("Gyeonggi")) {
-
                                             city_Start = item[i].indexOf("<incDec>");
                                             city_End = item[i].indexOf("</incDec>");
                                             city_data = item[i].substring(city_Start, city_End);
@@ -929,9 +930,9 @@ public class MainActivity extends AppCompatActivity {
                                             city_Start = item[i].indexOf("<isolClearCnt>");
                                             city_End = item[i].indexOf("</isolClearCnt>");
                                             city_data = item[i].substring(city_Start, city_End);
-                                            city_data_string = city_data.replace("<isolClearCnt>", "누적 완치자 수 = ");
+                                            city_data_string = city_data.replace("<isolClearCnt>", "누적 격리 해제자 수 = ");
                                             Total = Total + "\n" + city_data_string;
-
+                                    //코로나 API 정보 파싱(해당 API에서는 누적 격리해제자 수의 정보만 제공하기 때문에 당일날의 격리 해제자 값과 전날의 격리 해제자 값을 빼서 일일 격리 해제자 값을 추출함)
                                             try {
                                                 city_data_string = city_data.replace("<isolClearCnt>", "");
                                                 accumulated_isolation_today = Integer.parseInt(city_data_string);
@@ -971,7 +972,7 @@ public class MainActivity extends AppCompatActivity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                } else {
+                } else { //오류를 없애기 위해 
                     Toast.makeText(MainActivity.this, "아이디 혹은 비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
                 }
 
@@ -983,7 +984,7 @@ public class MainActivity extends AppCompatActivity {
         loginBt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, register.class);
+                Intent intent = new Intent(MainActivity.this, register.class); //회원가입 화면으로 이동
                 startActivity(intent);
             }
         });
@@ -992,18 +993,18 @@ public class MainActivity extends AppCompatActivity {
         loginBt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Search_ID_PW.class);
+                Intent intent = new Intent(getApplicationContext(), Search_ID_PW.class); //아이디,비밀번호 찾기 화면으로 이동
                 startActivity(intent);
             }
         });
     }
-    private String getTime() {
+    private String getTime() { //현재 시간을 받아오는 
         mNow = System.currentTimeMillis();
         mDate = new Date(mNow);
         return mFormat.format(mDate);
     }
 
-    private String getHTML() {
+    private String getHTML() { //코로나 API 정보를 String 값으로 받아오는 메소드
         String coronaHtml = "";
         HttpURLConnection con = null;
         InputStreamReader isr = null;
@@ -1048,7 +1049,7 @@ public class MainActivity extends AppCompatActivity {
         return coronaHtml;
     }
 
-    private String getHTML1() {
+    private String getHTML1() { // 코로나 API 정보를 String 값으로 받아오는 메소드 (일일 정보를  위해 전날 코로나 API 선언한 것)
         String coronaHtml = "";
         HttpURLConnection con = null;
         InputStreamReader isr = null;
@@ -1094,7 +1095,7 @@ public class MainActivity extends AppCompatActivity {
         return coronaHtml;
     }
 
-    private String City_api() {
+    private String City_api() { //코로나 API 정보를 String 값으로 받아오는 메소드
         String coronaHtml = "";
         HttpURLConnection con = null;
         InputStreamReader isr = null;
@@ -1138,7 +1139,7 @@ public class MainActivity extends AppCompatActivity {
         return coronaHtml;
     }
 
-    private String City_api1() {
+    private String City_api1() { //코로나 API 정보를 String 값으로 받아오는 메소드 (일일 정보를 추출하기 위해 전날 코로나 API 선언한 것)
         String coronaHtml = "";
         HttpURLConnection con = null;
         InputStreamReader isr = null;
@@ -1223,6 +1224,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*getter ------ setter*/
+    //다른 java 클래스에서 해당 값들을 참조하기 위해서 get set 
     public String getDateText() {
         return dateText;
     }
