@@ -23,7 +23,7 @@ public class corona_state extends Activity {
         String pas = "";
         int creatStart;
         int creatEnd;
-
+//MainActivty에서 파싱한 코로나 API 정보를 텍스트에 출력 
         TextView Accumulated_confirmed_API = (TextView) findViewById(R.id.Accumulated_confirmed_API);
         pas = ((MainActivity)MainActivity.mContext).getAccumulated_confirmed_API();
         Accumulated_confirmed_API.setText(pas);
