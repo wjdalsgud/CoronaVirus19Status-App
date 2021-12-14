@@ -22,10 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Search_ID_PW extends Activity {
-    FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuth;  // FireBase 인증
 
-    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance(); FireBase 선언
+    private DatabaseReference databaseReference = firebaseDatabase.getReference(); //실시간 DataBase 
 
     String getTest = "";
 
@@ -44,7 +44,7 @@ public class Search_ID_PW extends Activity {
             @Override
             public void onClick(View view) {
 
-                FirebaseDatabase.getInstance().getReference("UserAccount")
+                FirebaseDatabase.getInstance().getReference("UserAccount") // FireBase의 하위의 UserAccount의 데이터를 참조해서 데이터를 
                         .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
