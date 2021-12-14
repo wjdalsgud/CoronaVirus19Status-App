@@ -17,7 +17,7 @@ public class vaccine_type extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vaccine_type);
+        setContentView(R.layout.vaccine_type); //백신 종류 화면 출력
 // 화이자 버튼 클릭시 화이자 화면으로 이동
         Button pfizer= (Button)findViewById(R.id.Pfizer_Button);
         pfizer.setOnClickListener(new View.OnClickListener() {
