@@ -18,7 +18,7 @@ public class vaccine_side_effect extends Activity {
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
         bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) { // 하단 메뉴 바 동작
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) { // 하단 메뉴 바 동작 기능
                 Intent intent;
                 switch (item.getItemId()) {
                     case R.id.first_Tab:
