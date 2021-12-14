@@ -44,7 +44,7 @@ public class Search_ID_PW extends Activity {
             @Override
             public void onClick(View view) {
 
-                FirebaseDatabase.getInstance().getReference("UserAccount") // FireBase의 하위의 UserAccount의 데이터를 참조해서 데이터를 
+                FirebaseDatabase.getInstance().getReference("UserAccount") // FireBase의 하위의 UserAccount의 데이터를 참조해서 아이디 및 비밀번호를 
                         .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
