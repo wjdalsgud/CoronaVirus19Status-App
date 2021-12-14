@@ -12,7 +12,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class vaccine_explain3 extends Activity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) { //백신 설명 화면으로 이동
+    protected void onCreate(Bundle savedInstanceState) { //백신 설명 화면 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaccine_explain3);
 
