@@ -15,13 +15,13 @@ public class Daejeon extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.daejeon);
+        setContentView(R.layout.daejeon); //대전 화면 출력
 
         TextView daejeonText = (TextView) findViewById(R.id.Daejeon_API);
-        daejeonText.setText(((MainActivity) MainActivity.mContext).getDaejeon());
+        daejeonText.setText(((MainActivity) MainActivity.mContext).getDaejeon()); //MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
 
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
-        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() { // 하단 메뉴 바 동작 기능
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Intent intent;
