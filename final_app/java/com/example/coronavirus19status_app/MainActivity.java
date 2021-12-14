@@ -89,13 +89,13 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = this;
 
-        mFireBaseAuth = FirebaseAuth.getInstance();
-        mDataBaseRef = FirebaseDatabase.getInstance().getReference("coronaStatusApp");
+        mFireBaseAuth = FirebaseAuth.getInstance(); //FireBase 선언
+        mDataBaseRef = FirebaseDatabase.getInstance().getReference("coronaStatusApp"); //실시간 데이터베이스 선언
 
         EditText Editid = (EditText) findViewById(R.id.enterId);
         EditText EditPW = (EditText) findViewById(R.id.enterPass);
-
-        Button loginBt1 = (Button) findViewById(R.id.loginButton);
+ 
+        Button loginBt1 = (Button) findViewById(R.id.loginButton); // 로그인 버튼 실행 및 
         loginBt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
