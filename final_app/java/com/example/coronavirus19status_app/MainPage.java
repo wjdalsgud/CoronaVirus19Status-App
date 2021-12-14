@@ -24,8 +24,8 @@ public class MainPage extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.corona_main);
-
+        setContentView(R.layout.corona_main); //코로나 메인 화면 출력
+//MainActivity
         TextView time = (TextView) findViewById(R.id.time);
         time.setText(((MainActivity) MainActivity.mContext).getDateText());
 
@@ -33,7 +33,7 @@ public class MainPage extends Activity {
         all_info.setText(((MainActivity)MainActivity.mContext).getGyeonggi());
 
         Button city_button = (Button) findViewById(R.id.city_button);
-        city_button.setOnClickListener(new View.OnClickListener() {
+        city_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭 시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), city.class);
@@ -42,7 +42,7 @@ public class MainPage extends Activity {
         });
 
         Button vaccine = (Button) findViewById(R.id.vaccine_button);
-        vaccine.setOnClickListener(new View.OnClickListener() {
+        vaccine.setOnClickListener(new View.OnClickListener() {//버튼 클릭 시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vaccine.class);
@@ -51,7 +51,7 @@ public class MainPage extends Activity {
         });
 
         Button corona_state = (Button) findViewById(R.id.corona_state_button);
-        corona_state.setOnClickListener(new View.OnClickListener() {
+        corona_state.setOnClickListener(new View.OnClickListener() { //버튼 클릭 시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), corona_state.class);
@@ -60,7 +60,7 @@ public class MainPage extends Activity {
         });
 
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
-        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() { //하단 바 메뉴 기능
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Intent intent;
@@ -88,7 +88,7 @@ public class MainPage extends Activity {
         });
     }
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() { //하단 바 메뉴 기능
         if (System.currentTimeMillis() > backKeyPressedTime + 2500) {
             backKeyPressedTime = System.currentTimeMillis();
             toast = Toast.makeText(this, "뒤로 가기 버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_LONG);
