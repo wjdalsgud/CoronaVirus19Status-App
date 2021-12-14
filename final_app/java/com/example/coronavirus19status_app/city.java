@@ -253,7 +253,7 @@ public class city extends Activity {
             }
         });
         Button sejong_button = (Button) findViewById(R.id.Sejong_button);
-        sejong_button.setOnClickListener(new View.OnClickListener() {
+        sejong_button.setOnClickListener(new View.OnClickListener() { //버튼 클릭시 해당 화면으로 이동
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Sejong.class);
@@ -262,7 +262,7 @@ public class city extends Activity {
         });
 
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
-        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {// 하단 메뉴 바 동작 기능
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Intent intent;
