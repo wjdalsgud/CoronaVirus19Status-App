@@ -30,7 +30,7 @@ public class MainPage extends Activity {
         time.setText(((MainActivity) MainActivity.mContext).getDateText());
  //MainActivty에서 파싱한 코로나 API 정보값을 해당 텍스트에 출력
         TextView all_info = (TextView) findViewById(R.id.corona_state);
-        all_info.setText(((MainActivity)MainActivity.mContext).getGyeonggi());
+        all_info.setText(((MainActivity)MainActivity.mContext).getTotal());
 
         Button city_button = (Button) findViewById(R.id.city_button);
         city_button.setOnClickListener(new View.OnClickListener() {//버튼 클릭 시 해당 화면으로 이동
