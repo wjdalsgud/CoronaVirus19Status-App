@@ -1489,4 +1489,11 @@ public class MainActivity extends AppCompatActivity {
         this.accumulated_isolation_string = accumulated_isolation_string;
     }
 
+    public String getTotal() {
+        return Total;
+    }
+
+    public void setTotal(String total) {
+        Total = total;
+    }
 }
